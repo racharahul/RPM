@@ -16,40 +16,11 @@ Frontend Dashboard: Displays requests per minute using Chart.js.
 
 Load Generator: Simulates API load for testing.
 
-# Project Structure
-
-.
-├── backend/ # Express.js backend API
-│ ├── app.js # Main server logic
-│ ├── routes.js # API routes
-│ ├── database.js # In-memory request tracking
-│ ├── config.js # Configuration settings
-│ ├── Dockerfile # Backend Dockerfile
-│ ├── validation.js # Middleware for validation
-│ └── index.js # Server entry point
-│
-├── load-generator/ # Load generator (Node.js)
-│ ├── loadGenerator.js # Sends requests to backend
-│ ├── Dockerfile # Load generator Dockerfile
-│ └── package.json # Dependencies
-│
-├── frontend/ # Simple frontend
-│ ├── index.html # Frontend UI
-│ ├── script.js # Fetches and updates chart
-│ ├── styles.css # Styling
-│
-├── nginx/ # Nginx configuration
-│ ├── nginx.conf # Load balancing settings
-│
-├── docker-compose.yml # Defines multi-container setup
-└── README.txt # Project documentation
-
 # Setup & Usage
 
-Prerequisites
+Prerequisites:
 
 Docker
-
 Docker Compose
 
 Running the Project
@@ -73,7 +44,6 @@ Stats API (backend instance-specific): http://localhost:8080/stats
 
 The nginx.conf file routes API traffic between backend instances.
 
-{
 upstream backend_servers {
 server backend:3000;
 server backend:3001;
@@ -88,7 +58,6 @@ listen 80;
         proxy_pass http://backend_servers/stats;
     }
 
-}
 }
 
 # How It Works
