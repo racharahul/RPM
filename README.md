@@ -16,7 +16,8 @@ Frontend Dashboard: Displays requests per minute using Chart.js.
 
 Load Generator: Simulates API load for testing.
 
-**Project Structure**
+# Project Structure
+
 .
 ├── backend/ # Express.js backend API
 │ ├── app.js # Main server logic
@@ -43,7 +44,7 @@ Load Generator: Simulates API load for testing.
 ├── docker-compose.yml # Defines multi-container setup
 └── README.txt # Project documentation
 
-#Setup & Usage
+# Setup & Usage
 
 Prerequisites
 
@@ -68,7 +69,7 @@ Stats API (backend instance-specific): http://localhost:8080/stats
 
 4. Generate Load (Optional): docker-compose run load-generator
 
-#Nginx Load Balancing Configuration
+# Nginx Load Balancing Configuration
 
 The nginx.conf file routes API traffic between backend instances.
 
@@ -88,7 +89,7 @@ listen 80;
 
 }
 
-#How It Works
+# How It Works
 
 Nginx Load Balancing:
 
@@ -106,6 +107,6 @@ Load Generator:
 
 Simulates real-world API traffic to test the system.
 
-#Contributing
+# Contributing
 
 Feel free to fork the repository and submit pull requests. Suggestions and improvements are welcome!
