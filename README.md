@@ -16,7 +16,7 @@ Frontend Dashboard: Displays requests per minute using Chart.js.
 
 Load Generator: Simulates API load for testing.
 
-#Project Structure
+**Project Structure**
 .
 ├── backend/ # Express.js backend API
 │ ├── app.js # Main server logic
