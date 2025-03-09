@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RPM Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body
+    class="bg-gray-900 text-white flex flex-col items-center justify-center min-h-screen"
+  >
+    <h1 class="text-2xl font-bold mb-4">Requests Per Minute (RPM) Dashboard</h1>
+
+    <canvas id="rpmChart" class="bg-white rounded-lg p-4"></canvas>
+
+    <script>
+      const ctx = document.getElementById("rpmChart").getContext("2d");
+      let rpmChart = new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: [], // Container IDs
+          datasets: [
+            {
+              label: "Requests Per Minute",
+              data: [], // RPM values
+              backgroundColor: "rgba(75, 192, 192, 0.5)",
+              borderColor: "rgba(75, 192, 192, 1)",
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          scales: {
+            y: { beginAtZero: true },
+          },
+        },
+      });
+
+      async function fetchStats() {
+        try {
+          let response = await fetch("/stats");
+          let data = await response.json();
+
+          rpmChart.data.labels = Object.keys(data); // Container IDs
+          rpmChart.data.datasets[0].data = Object.values(data); // RPM values
+          rpmChart.update();
+        } catch (error) {
+          console.error("Error fetching stats:", error);
+        }
+      }
+
+      setInterval(fetchStats, 3000); // Update every 3 seconds
+      fetchStats(); // Initial call
+    </script>
+  </body>
+</html>
