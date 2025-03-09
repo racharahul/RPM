@@ -1,4 +1,4 @@
-# Load Balanced API with Nginx, Docker, and Express
+# RPM (Request Per Minute)
 
 This project demonstrates load balancing using Nginx, Docker, and Node.js (Express.js). It includes a backend API, a load generator, and a simple frontend to visualize requests per minute (RPM) per backend instance.
 
