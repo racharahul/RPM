@@ -73,6 +73,7 @@ Stats API (backend instance-specific): http://localhost:8080/stats
 
 The nginx.conf file routes API traffic between backend instances.
 
+{
 upstream backend_servers {
 server backend:3000;
 server backend:3001;
@@ -87,6 +88,7 @@ listen 80;
         proxy_pass http://backend_servers/stats;
     }
 
+}
 }
 
 # How It Works
